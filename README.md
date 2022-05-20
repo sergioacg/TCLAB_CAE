@@ -54,3 +54,6 @@ Nuevamente, este archivo es una modificación del Archivo original que puede ser
 
 <img src="https://raw.githubusercontent.com/sergioacg/TCLAB_CAE/master/simulink.PNG">
 
+## Instalación del Driver de Arduino en Matlab
+
+Para que Matlab soporte directamente la conexión de una placa Arduino, puede descargarse el driver en el siguiente enlace: [Driver Arduino-Matlab](https://la.mathworks.com/hardware-support/arduino-matlab.html)
