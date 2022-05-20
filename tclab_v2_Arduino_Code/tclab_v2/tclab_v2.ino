@@ -167,9 +167,9 @@ inline float readCurrent(int pin) {
   for (int i = 0; i < n; i++) {
     // (analogRead * 3300.0/1024.0 - 500.0)/10.0
     if (LM35)
-      degC += analogRead(pin) * 5000.0 / 1023.0;
+      degC += analogRead(pin) * 5.0 / 1023.0;
     else
-      degC += analogRead(pin) * 3300.3 / 1023.0;
+      degC += analogRead(pin) * 3.3 / 1023.0;
   }
   // return average from n reads
   return degC / n;
