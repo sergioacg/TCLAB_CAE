@@ -28,6 +28,9 @@ v3 = @() readVoltage(a, 'A1');
 v4 = @() readVoltage(a, 'A3');
 v5 = @() readVoltage(a, 'A4');
 
+% temperature calculations as a function of voltage for LM35
+TC35 = @(V) V*100.0;
+    
 % temperature calculations as a function of voltage for TMP36
 TC = @(V) (V - 0.5)*100.0;          % Celsius
 TK = @(V) TC(V) + 273.15;           % Kelvin
@@ -41,6 +44,11 @@ ImA = @(V) (V/R)*1000.0;            % miliAmpers
 T1C = @() TC(v1());
 T2C = @() TC(v2());
 T3C = @() TC(v3());
+
+% temperature read functions for LM35
+T1C35 = @() TC35(v1());
+T2C35 = @() TC35(v2());
+T3C35 = @() TC35(v3());
 
 % current read functions
 I1mA = @() ImA(v4());

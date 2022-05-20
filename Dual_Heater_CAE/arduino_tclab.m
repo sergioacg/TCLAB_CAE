@@ -14,6 +14,8 @@ else
     v4 = @() readVoltage(a, 'A3');
     v5 = @() readVoltage(a, 'A4');
     
+    % temperature calculations as a function of voltage for LM35
+    TC35 = @(V) V*100.0;
     % temperature calculations as a function of voltage for TMP36
     TC = @(V) (V - 0.5)*100.0;          % Celsius
     TK = @(V) TC(V) + 273.15;           % Kelvin
@@ -23,12 +25,17 @@ else
     R = 2.3;                            % Resistor in the TCLAB (Ohms)
     ImA = @(V) (V/R)*1000.0;            % miliAmpers
     
-    % temperature read functions
+    % temperature read functions for TMP36
     T1C = @() TC(v1());
     T2C = @() TC(v2());
     T3C = @() TC(v3());
     
-    % current read functions
+    % temperature read functions for LM35
+    T1C35 = @() TC35(v1());
+    T2C35 = @() TC35(v2());
+    T3C35 = @() TC35(v3());
+    
+    % current read functions 
     I1mA = @() ImA(v4());
     I2mA = @() ImA(v5());
     
@@ -51,6 +58,9 @@ TC2 = T2C();
 TC3 = T3C();
 I1mA = I1mA();
 I2mA = I2mA();
+TC1_35 = T1C35();
+TC2_35 = T2C35();
+TC3_35 = T3C35();
 TI = [TC1,TC2,TC3,I1mA,I2mA];
 
 % write heater levels

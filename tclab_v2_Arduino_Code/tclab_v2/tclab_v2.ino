@@ -74,6 +74,9 @@
   String boardType = "Unknown board";
 #endif
 
+// Are you used LM35?
+bool LM35 = false;
+
 // Enable debugging output
 const bool DEBUG = false;
 
@@ -120,7 +123,7 @@ float Q2 = 0;                  // last value written to heater 2 in units of per
 int alarmStatus;               // hi temperature alarm status
 boolean newData = false;       // boolean flag indicating new command
 
-int n = 10;                    // number of samples for each temperature measurement
+int n = 20;                    // number of samples for each temperature measurement
 
 void readCommand() {
   while (Serial && (Serial.available() > 0) && (newData == false)) {
@@ -150,7 +153,10 @@ inline float readTemperature(int pin) {
   float degC = 0.;
   for (int i = 0; i < n; i++) {
     // (analogRead * 3300.0/1024.0 - 500.0)/10.0
-    degC += analogRead(pin) * 0.322265625 - 50.0;
+    if(LM35)
+      degC += float(analogRead(pin))*0.48828125; 
+    else
+      degC += analogRead(pin) * 0.322265625 - 50.0;
   }
   // return average from n reads
   return degC / n;
@@ -160,7 +166,10 @@ inline float readCurrent(int pin) {
   float degC = 0.;
   for (int i = 0; i < n; i++) {
     // (analogRead * 3300.0/1024.0 - 500.0)/10.0
-    degC += analogRead(pin) * 3.3 / 1023.0;
+    if (LM35)
+      degC += analogRead(pin) * 5000.0 / 1023.0;
+    else
+      degC += analogRead(pin) * 3300.3 / 1023.0;
   }
   // return average from n reads
   return degC / n;
@@ -328,7 +337,8 @@ void setHeater2(float qval) {
 
 // arduino startup
 void setup() {
-  analogReference(EXTERNAL);
+  if( ~LM35 )
+    analogReference(EXTERNAL);
   while (!Serial) {
     ; // wait for serial port to connect.
   }
