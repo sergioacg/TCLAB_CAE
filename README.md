@@ -3,6 +3,10 @@ En esta placa del laboratório de temperatura es adicionado dos resistencias shu
 
 <img src="https://raw.githubusercontent.com/sergioacg/TCLAB_CAE/master/Dual_Heater_CAE/tclab.jpg" width="512" height="384">
 
+Se debe buscar una fuente de alimentación de potencia hacia los transistores que encaje mediante una conexión de Jack plug de 5.0mm que puede ser de 5v / 12v con el positivo en el centro.
+
+<img src="https://github.com/sergioacg/TCLAB_CAE/blob/master/plug_power.jpg?raw=true" width="512" height="384">
+
 En este repositório, tenemos 2 archivos:
 
 ## tclab_v2_Arduino_Code
@@ -50,3 +54,6 @@ Nuevamente, este archivo es una modificación del Archivo original que puede ser
 
 <img src="https://raw.githubusercontent.com/sergioacg/TCLAB_CAE/master/simulink.PNG">
 
+## Instalación del Driver de Arduino en Matlab
+
+Para que Matlab soporte directamente la conexión de una placa Arduino, puede descargarse el driver en el siguiente enlace: [Driver Arduino-Matlab](https://la.mathworks.com/hardware-support/arduino-matlab.html)
