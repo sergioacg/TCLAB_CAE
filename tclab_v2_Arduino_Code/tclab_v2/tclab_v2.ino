@@ -3,6 +3,8 @@
   Jeffrey Kantor, Bill Tubbs, John Hedengren
   May 2019
 
+  Modified by Sergio Andres Castaño Giraldo for TCLAB_CAE 2022
+
   This firmware provides a high level interface to the Temperature Control Lab. The
   firmware scans the serial port for commands. Commands are case-insensitive. Any
   unrecognized command results in sleep model. Each command returns a result string.
@@ -18,6 +20,9 @@
   SCAN      get values T1 T2 Q1 Q1 in line delimited values
   T1        get Temperature T1. Returns value of T1 in °C.
   T2        get Temperature T2. Returns value of T2 in °C.
+  T3        get Temperature T2. Returns value of T3 in °C.
+  I1        get current of Heater 1. Returns value of I1 in A.
+  I2        get current of Heater 2. Returns value of I2 in A.
   VER       get firmware version string
   X         stop, enter sleep mode. Returns "Stop"
 
@@ -156,23 +161,22 @@ inline float readTemperature(int pin) {
     if(LM35)
       degC += float(analogRead(pin))*0.48828125; 
     else
-      degC += analogRead(pin) * 0.322265625 - 50.0;
+      degC += float(analogRead(pin)) * 0.322265625 - 50.0;
   }
   // return average from n reads
   return degC / n;
 }
 
 inline float readCurrent(int pin) {
-  float degC = 0.;
+  float ImA = 0.;
   for (int i = 0; i < n; i++) {
-    // (analogRead * 3300.0/1024.0 - 500.0)/10.0
     if (LM35)
-      degC += analogRead(pin) * 5.0 / 1023.0;
+      ImA += float(analogRead(pin)) * 5.0 / 1023.0;
     else
-      degC += analogRead(pin) * 3.3 / 1023.0;
+      ImA += float(analogRead(pin)) * 3.3 / 1023.0;
   }
   // return average from n reads
-  return degC / n;
+  return ImA / n;
 }
 
 void parseCommand(void) {
