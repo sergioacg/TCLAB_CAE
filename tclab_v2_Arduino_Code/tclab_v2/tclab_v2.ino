@@ -171,9 +171,9 @@ inline float readCurrent(int pin) {
   float ImA = 0.;
   for (int i = 0; i < n; i++) {
     if (LM35)
-      ImA += float(analogRead(pin)) * 5.0 / 1023.0;
+      ImA += float(analogRead(pin)) * 5000.0 / 1023.0;
     else
-      ImA += float(analogRead(pin)) * 3.3 / 1023.0;
+      ImA += float(analogRead(pin)) * 3300.0 / 1023.0;
   }
   // return average from n reads
   return ImA / n;
