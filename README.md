@@ -7,6 +7,14 @@ Se debe buscar una fuente de alimentación de potencia hacia los transistores qu
 
 <img src="https://github.com/sergioacg/TCLAB_CAE/blob/master/plug_power.jpg?raw=true" width="512" height="384">
 
+Cursos de Control en Sistemas Embebidos
+--------------------
+
+Si esta interesado en realizar cursos de control sin necesidad de usar Python o Matlab, sino que desea saber como programar los controladores directamente en el microcontrolador Arduino o en un microcontrolador PIC de Microchip empleando el PIC C Compiler, puede acceder a los siguientes cursos con un Cupon de Descuento en el sitio web de **Control Automático Educación**
+
+Implementación de Controladores en Dispositivos Embebidos usando el TCLAB_CAE <https://controlautomaticoeducacion.com/sistemas-de-control-en-dispositivos-embebidos/>
+
+
 En este repositório, tenemos 2 archivos:
 
 ## tclab_v2_Arduino_Code
@@ -16,7 +24,12 @@ El transistor 2, está configurado para recibir menos potencia que el transistor
 
 <img src="https://github.com/sergioacg/TCLAB_CAE/blob/master/Potencia.PNG?raw=true">
 
-## Dual_Heater_CAE
+Se puede seleccionar el tipo de sensor de temperatura con el cual fue construido el TCLab, por defecto se espera que la planta sea construida con el sensor TMP36, sin embargo, si se utiliza el sensor LM35 este debe ser especificado en el código del Arduino colocando la variable booleana en TRUE, como es mostrado en la siguiente figura:
+
+
+<img src="https://github.com/sergioacg/TCLAB_CAE/blob/master/sensor.png?raw=true">
+
+## Dual_Heater_CAE - MATLAB Code
 
 En esta carpeta se encuentran los archivos de prueba con los cuales se puede probar el laboratorio de temperatura.
 
@@ -57,3 +70,23 @@ Nuevamente, este archivo es una modificación del Archivo original que puede ser
 ## Instalación del Driver de Arduino en Matlab
 
 Para que Matlab soporte directamente la conexión de una placa Arduino, puede descargarse el driver en el siguiente enlace: [Driver Arduino-Matlab](https://la.mathworks.com/hardware-support/arduino-matlab.html)
+
+
+## Instalación de la Biblioteca de Python con el TCLab_CAE
+
+El repositorio de la biblioteca de *TCLab_CAE* está disponible en el siguiente repositorio: <https://github.com/sergioacg/TCLAB_PYTHON_CAE>
+
+La instalación del TCLAB se hace en el terminal usando el manejador de paquetes ``pip``(en el caso de Anaconda abra el programa como administrador en Windows para una correcta instalación de los paquetes):
+
+``pip install tclab-cae``
+
+Si hay problemas con los permisos se puede intentar el comando:
+
+``pip install tclab-cae --user``
+
+Posteriormente, deberemos instalar la biblioteca de comunicación serial pyserial:
+
+``pip install pyserial``
+
+``conda install pyserial``
+
