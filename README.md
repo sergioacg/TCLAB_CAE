@@ -1,92 +1,89 @@
-# TCLAB Adaptado con Sensores de Corriente
-En esta placa del laboratório de temperatura es adicionado dos resistencias shunt en el transistor, para permitir la lectura de la corriente a través de la ley de Ohm.  Y un tercer sensor de temperatura para medir la temperatura externa del circuito.
+# TCLAB Adapted with Current Sensors
+On this temperature laboratory board, two shunt resistors have been added to the transistor, permitting current reading through Ohm's law. A third temperature sensor is incorporated to measure the circuit's external temperature.
 
 <img src="https://raw.githubusercontent.com/sergioacg/TCLAB_CAE/master/Dual_Heater_CAE/tclab.jpg" width="512" height="384">
 
-Se debe buscar una fuente de alimentación de potencia hacia los transistores que encaje mediante una conexión de Jack plug de 5.0mm que puede ser de 5v / 12v con el positivo en el centro.
+A power supply for the transistors is necessary, ideally connected via a 5.0mm Jack plug that can accommodate 5v / 12v with the positive in the center.
 
 <img src="https://github.com/sergioacg/TCLAB_CAE/blob/master/plug_power.jpg?raw=true" width="512" height="384">
 
-Cursos de Control en Sistemas Embebidos
+Embedded Systems Control Courses
 --------------------
 
-Si esta interesado en realizar cursos de control sin necesidad de usar Python o Matlab, sino que desea saber como programar los controladores directamente en el microcontrolador Arduino o en un microcontrolador PIC de Microchip empleando el PIC C Compiler, puede acceder a los siguientes cursos con un Cupon de Descuento en el sitio web de **Control Automático Educación**
+If you are interested in undertaking control courses without the need for Python or Matlab, but wish to learn how to program the controllers directly on the Arduino microcontroller or on a Microchip PIC microcontroller using the PIC C Compiler, you can access the following courses with a Discount Coupon on the **Automatic Control Education** website:
 
-Implementación de Controladores en Dispositivos Embebidos usando el TCLAB_CAE <https://controlautomaticoeducacion.com/sistemas-de-control-en-dispositivos-embebidos/>
+Implementation of Controllers on Embedded Devices using the TCLAB_CAE <https://controlautomaticoeducacion.com/sistemas-de-control-en-dispositivos-embebidos/>
 
-
-En este repositório, tenemos 2 archivos:
+In this repository, we have 2 files:
 
 ## tclab_v2_Arduino_Code
-Este es el archivo que debe ser cargado en el Arduino a través del Arduino IDE. Permite direccionar todos los sensores y actuadores de la placa para una correcta lectura con Matlab.
+This is the file that should be loaded onto the Arduino via the Arduino IDE. It allows addressing all the sensors and actuators on the board for a correct reading with Matlab.
 
-El transistor 2, está configurado para recibir menos potencia que el transistor 1. Se puede cambiar esta configuración dentro del archivo del Arduino:
+Transistor 2 is configured to receive less power than transistor 1. This configuration can be changed within the Arduino file:
 
 <img src="https://github.com/sergioacg/TCLAB_CAE/blob/master/Potencia.PNG?raw=true">
 
-Se puede seleccionar el tipo de sensor de temperatura con el cual fue construido el TCLab, por defecto se espera que la planta sea construida con el sensor TMP36, sin embargo, si se utiliza el sensor LM35 este debe ser especificado en el código del Arduino colocando la variable booleana en TRUE, como es mostrado en la siguiente figura:
-
+The type of temperature sensor with which the TCLab was built can be selected. By default, it is expected that the plant be built with the TMP36 sensor. However, if the LM35 sensor is used, this must be specified in the Arduino code by setting the Boolean variable to TRUE, as shown in the following figure:
 
 <img src="https://github.com/sergioacg/TCLAB_CAE/blob/master/sensor.png?raw=true">
 
 ## Dual_Heater_CAE - MATLAB Code
 
-En esta carpeta se encuentran los archivos de prueba con los cuales se puede probar el laboratorio de temperatura.
+In this folder, you will find test files which can be used to test the temperature laboratory.
 
-Estos archivos son propios de [APMonitor](http://apmonitor.com/pdc/index.php/Main/ArduinoTemperatureControl "APMonitor") del laboratorio del profesor John Hedengren.
+These files are originally from [APMonitor](http://apmonitor.com/pdc/index.php/Main/ArduinoTemperatureControl "APMonitor") by Professor John Hedengren.
 
-Solo han sido **MODIFICADOS** para permitir la lectura de la **temperatura externa** y permitir la lectura de la **corriente que circula por los transistores**.
+They have been **MODIFIED** to allow reading of the **external temperature** and to allow reading of the **current flowing through the transistors**.
 
 <img src="https://raw.githubusercontent.com/sergioacg/TCLAB_CAE/master/files.PNG">
 
 ### test_LED.m
-Permite realizar un testeo del LED de la placa del TCLAB realizando un parpadeo y verificando que responde adecuadamente.
+This script allows you to test the LED on the TCLAB board by causing it to blink and verifying that it responds properly.
 
 ### test_Heaters.m
-Permite realizar un testeo de los calentadores o Heaters (Transisotres) de la placa del TCLAB. Encendiendo y apagando ambos calentadores, para verificar si efectivamente la temperatura está  incrementando.
+This script allows you to test the heaters (transistors) on the TCLAB board by switching them on and off to verify if the temperature is indeed rising.
 
-- Es necesario tener conectado la fuente externa hacia los transistores
-- Tener precausión para evitar quemaduras si van a tocar los transistores.
+- An external source connected to the transistors is necessary.
+- Be cautious to avoid burns if you are going to touch the transistors.
 
 ### test_Temp_Read.m
-Permite realizar un testeo de los 3 sensores de temperatura de la placa del TCLAB_CAE. Mostrando la temperatura actual de los 3 sensores, encendiendo ambos calentadores por un tiempo preestablecido, y finalmente mostrando el resultado de la lectura de los sensores nuevamente.
+This script allows you to test the 3 temperature sensors on the TCLAB_CAE board. It displays the current temperature of the 3 sensors, switches on both heaters for a preset time, and finally shows the reading from the sensors again.
 
 ### test_Current_Read.m
-Permite realizar un testeo de los 2 sensores de corriente de la placa del TCLAB_CAE. Encendiendo gradualmente los calentadores y mostrando cada segundo la lectura de la corriente que circula por cada transistor.
+This script allows you to test the 2 current sensors on the TCLAB_CAE board. It gradually switches on the heaters and displays the current reading from each transistor every second.
 
-Dado que en el Arduino está configurado a que el transistor 1 tenga mayor potencia que el transistor 2, dependiendo del porcentaje de PWM configurado en los transistores, es normal que circule más corriente por el transistor 1 en una misma configuración de PWM.
+Since Arduino is configured for transistor 1 to have more power than transistor 2, depending on the PWM percentage set in the transistors, it is normal for more current to flow through transistor 1 under the same PWM setting.
 
-Verificar también con un multimetro el valor real de la resistencia R1 y R2 y puede modificarse en el archivo **tclab** y **arduino_tclab**.
+Also, verify with a multimeter the real value of resistors R1 and R2, which can be modified in the **tclab** and **arduino_tclab** files.
 
 <img src="https://raw.githubusercontent.com/sergioacg/TCLAB_CAE/master/resistor.PNG">
 
 ### arduino_lab.slx
-Archivo de Simulink, que permite variar los heaters de la placa y observar la variación de los 5 sensores que posee el TCLAB_CAE.
+A Simulink file that allows you to vary the heaters on the board and observe the variation of the 5 sensors that the TCLAB_CAE possesses.
 
-Nuevamente, este archivo es una modificación del Archivo original que puede ser encontrado en [APMonitor](http://apmonitor.com/pdc/index.php/Main/ArduinoTemperatureControl "APMonitor") del laboratorio del profesor John Hedengren.
+Again, this file is a modification of the original file which can be found on [APMonitor](http://apmonitor.com/pdc/index.php/Main/ArduinoTemperatureControl "APMonitor") by Professor John Hedengren.
 
 <img src="https://raw.githubusercontent.com/sergioacg/TCLAB_CAE/master/simulink.PNG">
 
-## Instalación del Driver de Arduino en Matlab
+## Arduino Driver Installation in Matlab
 
-Para que Matlab soporte directamente la conexión de una placa Arduino, puede descargarse el driver en el siguiente enlace: [Driver Arduino-Matlab](https://la.mathworks.com/hardware-support/arduino-matlab.html)
+For Matlab to directly support an Arduino board connection, you can download the driver at the following link: [Arduino-Matlab Driver](https://la.mathworks.com/hardware-support/arduino-matlab.html)
 
 
-## Instalación de la Biblioteca de Python con el TCLab_CAE
+## Installation of the Python Library with TCLab_CAE
 
-El repositorio de la biblioteca de *TCLab_CAE* está disponible en el siguiente repositorio: <https://github.com/sergioacg/TCLAB_PYTHON_CAE>
+The *TCLab_CAE* library repository is available at the following repository: <https://github.com/sergioacg/TCLAB_PYTHON_CAE>
 
-La instalación del TCLAB se hace en el terminal usando el manejador de paquetes ``pip``(en el caso de Anaconda abra el programa como administrador en Windows para una correcta instalación de los paquetes):
+The TCLAB installation is done in the terminal using the ``pip`` package manager (for Anaconda, open the program as an administrator on Windows for a correct installation of the packages):
 
 ``pip install tclab-cae``
 
-Si hay problemas con los permisos se puede intentar el comando:
+If there are issues with permissions, you can try the command:
 
 ``pip install tclab-cae --user``
 
-Posteriormente, deberemos instalar la biblioteca de comunicación serial pyserial:
+Subsequently, you should install the pyserial communication library:
 
 ``pip install pyserial``
 
 ``conda install pyserial``
-
