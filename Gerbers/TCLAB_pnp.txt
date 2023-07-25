@@ -1,0 +1,56 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=TCLAB
+*Date=22:22:48
+*CreatedBy=Fritzing 0.9.3b.04.19.5c895d327c44a3114e5fcc9d8260daf0cbb52806
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;;2.14123;-27.4849;0;Bottom;Via10
+2;1;0603 [SMD];47.0107;-49.5873;0;Top;R6
+3;1;0603 [SMD];29.5578;-21.8832;-90;Top;R2
+4;;;37.8134;-23.4244;0;Bottom;TXT1
+5;;;22.8974;-22.937;0;Bottom;TXT1
+6;;;30.2869;-34.7081;0;Bottom;TXT2
+7;100µF;0605 [SMD, electrolytic];8.04111;-10.3637;0;Top;C1
+8;10k;0603 [SMD];4.6938;-17.2793;-90;Top;R3
+9;;;49.645;-46.4404;0;Bottom;Via7
+10;;;18.9319;-15.1338;0;Bottom;Via6
+11;1;0603 [SMD];44.5669;-21.5149;-90;Top;R1
+12;;;49.7754;-28.2517;0;Bottom;Via1
+13;;;59.8937;-28.1996;0;Bottom;TXT1
+14;1;0603 [SMD];34.8675;-48.6376;0;Top;R7
+15;;;49.4635;-15.2122;0;Bottom;Via9
+16;;THT;57.5518;-3.22418;90;Bottom;J5
+17;;;22.9459;-16.6581;0;Bottom;Via8
+18;;TO92 [THT];59.6039;-24.6959;180;Bottom;T3
+19;;;34.7541;-31.9321;0;Bottom;TCLAB
+20;;TO220 [THT];22.9881;-32.1176;0;Bottom;Q2
+21;;;12.7277;-51.6478;0;Bottom;IMG1
+22;;THT;54.9314;-60.0607;90;Bottom;J3
+23;;SO 08 [SMD];6.63916;-25.106;0;Top;U1
+24;;THT;30.5731;-59.8069;-90;Bottom;J2
+25;;power_jack_pth;62.3161;-38.1731;-90;Bottom;J6
+26;;TO92 [THT];37.1322;-25.9326;180;Bottom;T1
+27;;;29.5578;-32.9594;0;Bottom;Via4
+28;;;8.58733;-31.0305;0;Bottom;Via3
+29;10k;0603 [SMD];6.02337;-33.3092;-90;Top;R4
+30;;TO92 [THT];23.0236;-25.802;180;Bottom;T2
+31;;;37.2532;-15.2811;0;Bottom;TXT4
+32;;TO220 [THT];36.8711;-32.0725;0;Bottom;Q1
+33;;THT;37.0616;-3.37715;90;Bottom;J4
+34;;;49.7969;-13.4584;0;Bottom;TXT5
+35;;;7.31022;-19.3914;0;Bottom;Via2
+36;;0603 [SMD];29.7965;-41.4635;0;Top;HOT
+37;;;14.1968;-15.0697;0;Bottom;Via5
+38;100µF;0605 [SMD, electrolytic];8.70312;-41.5401;0;Top;C2
+39;1;0603 [SMD];55.3145;-49.6539;0;Top;R5
+40;;;20.5247;-17.3094;0;Bottom;Via11
+41;;;36.2524;-18.0129;0;Bottom;TXT3
